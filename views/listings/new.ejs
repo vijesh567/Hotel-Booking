@@ -1,0 +1,81 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="row ok mt-3">
+  <div class="col-8 offset-2">
+    <h3 style="color: yellow">Add Hotels</h3>
+    <form
+      m
+      method="POST"
+      action="/listings"
+      novalidate
+      class="needs-validation"
+    >
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input
+          name="listing[title]"
+          placeholder="Add a catchy title"
+          type="text"
+          class="form-control"
+          required
+        />
+        <div class="invalid-feedback">InValid</div>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea
+          name="listing[description]"
+          placeholder="Enter description"
+          type="text"
+          class="form-control"
+          required
+        ></textarea>
+        <div class="invalid-feedback">InValid</div>
+      </div>
+      <div class="mb-3">
+        <label for="image" class="form-label">Image URL</label>
+        <input
+          name="listing[image]"
+          placeholder="Enter image URL/Link"
+          type="text"
+          class="form-control"
+        />
+        <div class="invalid-feedback">InValid</div>
+      </div>
+      <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input
+          name="listing[price]"
+          placeholder="Enter price"
+          type="number"
+          class="form-control"
+          required
+        />
+        <div class="invalid-feedback">InValid</div>
+      </div>
+      <div class="mb-3">
+        <label for="country" class="form-label">Country</label>
+        <input
+          name="listing[country]"
+          placeholder="Enter country"
+          type="text"
+          class="form-control"
+          required
+        />
+        <div class="invalid-feedback">InValid</div>
+      </div>
+      <div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+        <input
+          name="listing[location]"
+          placeholder="Enter location"
+          type="text"
+          class="form-control"
+          required
+        />
+        <div class="invalid-feedback">InValid</div>
+      </div>
+      <button type="submit" class="btn btn-light add-btn">Add Hotel</button>
+    </form>
+  </div>
+</div>
