@@ -53,6 +53,11 @@ app.get("/listings/:id", async (req, res) => {
   res.render("listings/show.ejs", { listing });
 });
 
+// Fitness Tracker Route
+app.get("/listings/fitness-tracker", (req, res) => {
+  res.render("tracker.ejs"); // Updated to tracker.ejs
+});
+
 // Create Route
 app.post("/listings", async (req, res) => {
   const newListing = new Listing(req.body.listing);
@@ -82,10 +87,7 @@ app.delete("/listings/:id", async (req, res) => {
   res.redirect("/listings");
 });
 
-// Fitness Tracker Route
-app.get("/listings/fitness-tracker", (req, res) => {
-  res.render("tracker.ejs"); // Updated to tracker.ejs
-});
+
 
 // Define a Mongoose schema for fitness tracking
 const fitnessSchema = new mongoose.Schema({
