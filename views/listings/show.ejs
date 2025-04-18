@@ -2,7 +2,7 @@
 
 <div class="row ok mt-3">
   <div class="col-8 offset-2">
-    <h3 style="color:yellow">Hotel Details</h3>
+    <h3 style="color:yellow">Coach Details</h3>
     <div class="card col-6">
       <img
         src="<%= listing.image %>"
@@ -21,7 +21,7 @@
         <div class="d-flex gap-4">
           <a href="/listings/<%= listing._id %>/edit" class="btn btn-light edt-btn">Edit Hotel</a>
           <form method="POST" action="/listings/<%=listing._id%>?_method=DELETE">
-            <button class="btn btn-light del-btn">Delete Hotel</button>
+            <button class="btn btn-light del-btn">Delete Coach</button>
           </form>
         </div>
       </div>
