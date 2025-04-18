@@ -74,7 +74,7 @@ app.put("/listings/:id", async (req, res) => {
   res.redirect(`/listings/${id}`);
 });
 //Tracker
-app.get('/fitness', (req, res) => {
+app.get("/listings/fitness", async (req, res) => {
     res.render('listings/fitness', { title: 'Fitness Tracker' });
 });
 
