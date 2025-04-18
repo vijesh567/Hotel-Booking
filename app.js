@@ -75,7 +75,7 @@ app.put("/listings/:id", async (req, res) => {
 });
 //Tracker
 app.get('/fitness', (req, res) => {
-    res.render('fitness', { title: 'Fitness Tracker' });
+    res.render('listings/fitness', { title: 'Fitness Tracker' });
 });
 
 // Delete Route
