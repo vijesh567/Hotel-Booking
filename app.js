@@ -82,6 +82,43 @@ app.delete("/listings/:id", async (req, res) => {
   res.redirect("/listings");
 });
 
+// Fitness Tracker Route
+app.get("/fitness-tracker", (req, res) => {
+  res.render("tracker.ejs"); // Updated to tracker.ejs
+});
+
+// Define a Mongoose schema for fitness tracking
+const fitnessSchema = new mongoose.Schema({
+  pushups: Number,
+  pullups: Number,
+  jumpingJacks: Number,
+  plank: Number,
+  timestamp: { type: Date, default: Date.now }
+  // You might want to associate this with a user later
+});
+
+const FitnessRecord = mongoose.model("FitnessRecord", fitnessSchema);
+
+// Route to handle saving the fitness tracking data
+app.post("/fitness-tracker/save", async (req, res) => {
+  const { pushups, pullups, jumpingJacks, plank } = req.body;
+  const newRecord = new FitnessRecord({
+    pushups: parseInt(pushups),
+    pullups: parseInt(pullups),
+    jumpingJacks: parseInt(jumpingJacks),
+    plank: parseInt(plank),
+  });
+
+  try {
+    await newRecord.save();
+    console.log("Fitness data saved!");
+    res.redirect("/fitness-tracker"); // Redirect back to the tracker page
+  } catch (error) {
+    console.error("Error saving fitness data:", error);
+    res.send("Error saving data."); // Basic error handling
+  }
+});
+
 app.listen(8080, () => {
   console.log("🚀 Server is running on port 8080");
 });
