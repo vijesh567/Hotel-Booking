@@ -73,10 +73,6 @@ app.put("/listings/:id", async (req, res) => {
   await Listing.findByIdAndUpdate(id, { ...req.body.listing });
   res.redirect(`/listings/${id}`);
 });
-//Tracker
-app.get("/listings/fitness", async (req, res) => {
-    res.render('listings/fitness', { title: 'Fitness Tracker' });
-});
 
 // Delete Route
 app.delete("/listings/:id", async (req, res) => {
