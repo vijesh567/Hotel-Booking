@@ -83,7 +83,7 @@ app.delete("/listings/:id", async (req, res) => {
 });
 
 // Fitness Tracker Route
-app.get("/fitness-tracker", (req, res) => {
+app.get("/listings/fitness-tracker", (req, res) => {
   res.render("tracker.ejs"); // Updated to tracker.ejs
 });
 
@@ -100,7 +100,7 @@ const fitnessSchema = new mongoose.Schema({
 const FitnessRecord = mongoose.model("FitnessRecord", fitnessSchema);
 
 // Route to handle saving the fitness tracking data
-app.post("/fitness-tracker/save", async (req, res) => {
+app.post("/listings/fitness-tracker/save", async (req, res) => {
   const { pushups, pullups, jumpingJacks, plank } = req.body;
   const newRecord = new FitnessRecord({
     pushups: parseInt(pushups),
