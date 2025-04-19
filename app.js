@@ -53,11 +53,6 @@ app.get("/listings/:id", async (req, res) => {
   res.render("listings/show.ejs", { listing });
 });
 
-// Fitness Tracker Route
-app.get("/listings/fitness-tracker", (req, res) => {
-  res.render("tracker.ejs"); // Updated to tracker.ejs
-});
-
 // Create Route
 app.post("/listings", async (req, res) => {
   const newListing = new Listing(req.body.listing);
@@ -87,39 +82,6 @@ app.delete("/listings/:id", async (req, res) => {
   res.redirect("/listings");
 });
 
-
-
-// Define a Mongoose schema for fitness tracking
-const fitnessSchema = new mongoose.Schema({
-  pushups: Number,
-  pullups: Number,
-  jumpingJacks: Number,
-  plank: Number,
-  timestamp: { type: Date, default: Date.now }
-  // You might want to associate this with a user later
-});
-
-const FitnessRecord = mongoose.model("FitnessRecord", fitnessSchema);
-
-// Route to handle saving the fitness tracking data
-app.post("/listings/fitness-tracker/save", async (req, res) => {
-  const { pushups, pullups, jumpingJacks, plank } = req.body;
-  const newRecord = new FitnessRecord({
-    pushups: parseInt(pushups),
-    pullups: parseInt(pullups),
-    jumpingJacks: parseInt(jumpingJacks),
-    plank: parseInt(plank),
-  });
-
-  try {
-    await newRecord.save();
-    console.log("Fitness data saved!");
-    res.redirect("/fitness-tracker"); // Redirect back to the tracker page
-  } catch (error) {
-    console.error("Error saving fitness data:", error);
-    res.send("Error saving data."); // Basic error handling
-  }
-});
 
 app.listen(8080, () => {
   console.log("🚀 Server is running on port 8080");
